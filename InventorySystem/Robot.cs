@@ -18,7 +18,9 @@ public class Robot
     {
         if (DryRun)
         {
-            Log?.Invoke($"[DryRun] -> {IpAddress}:{port}\n{message.Trim()}\n");
+            // Log kun første linje af programmet for at undgå kæmpe blokke tekst
+            var firstLine = message.Split('\n')[0].Trim();
+            Log?.Invoke($"[DryRun] -> {IpAddress}:{port} | {firstLine} ...");
             return;
         }
 
